@@ -1,0 +1,40 @@
+<div class="pt-3 pb-2 mb-3 border-bottom">
+    <a routerLink="/products/create" href="javascript:void(0)" class="btn btn-sm btn-outline-secondary">Add</a>
+</div>
+
+<app-paginator [lastPage]="lastPage" (pageChanged)="load($event)"></app-paginator>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col"><button class="btn btn-link" (click)="sort('id')">#</button></th>
+                <th scope="col">Image</th>
+                <th scope="col"><button class="btn btn-link" (click)="sort('title')">Title</button></th>
+                <th scope="col"><button class="btn btn-link" (click)="sort('description')">Description</button></th>
+                <th scope="col"><button class="btn btn-link" (click)="sort('price')">Price</button></th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td><img [src]="product.image" [alt]="product.title" width="100" /></td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+
+                <td>
+                    <div class="btn-group mr-2">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary"
+                            (click)="deleteProduct(product.id)">Delete</a>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <a routerLink="/products/{{product.id}}/edit" href="javascript:void(0)"
+                            class="btn btn-sm btn-outline-secondary">Edit</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

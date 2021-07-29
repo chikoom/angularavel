@@ -1,0 +1,14 @@
+<form [formGroup]="userForm" (ngSubmit)="editUserSubmit()">
+    <h1 class="h3 mb-3 fw-normal">Edit User</h1>
+
+    <input formControlName="first_name" name="first_name" class="form-control" placeholder="First Name" required>
+    <input formControlName="last_name" name="last_name" class="form-control" placeholder="Last Name" required>
+    <input formControlName="email" name="email" type="email" class="form-control" placeholder="Email" required>
+
+    <label for="role_id">Role:</label>
+    <select formControlName="role_id" name="role_id" class="form-control">
+        <option *ngFor="let role of roles" [ngValue]="role.id">{{ role.name }}</option>
+    </select>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+</form>
